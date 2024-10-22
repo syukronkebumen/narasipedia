@@ -72,7 +72,9 @@ class ArtikelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategoris = KategoriArtikel::get();
+        $datas = Artikel::find($id);
+        return view('admin.berita.edit', compact('kategoris','datas'));
     }
 
     /**
@@ -80,7 +82,18 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $artikel = Artikel::find($id);
+        $artikel->kategori_id = $request->kategori_id;
+        $artikel->judul = $request->judul;
+        $artikel->deskripsi = $request->deskripsi;
+
+        if ($request->file('gambar')) {
+            $photo_path = $request->file('gambar')->store('artikel','public');
+            $artikel->gambar = $photo_path;
+        }
+        // dd($artikel);
+        $artikel->update();
+        return redirect()->route('artikel.index')->with('status','berhasil menambahkan data!');
     }
 
     /**

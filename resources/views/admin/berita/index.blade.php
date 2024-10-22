@@ -1,4 +1,4 @@
-@extends('layouts.appadmin')
+@extends('layouts.sbadmin')
 
 @section('content')
 <div class="container">
@@ -11,7 +11,7 @@
                             <h3 class="card-title">Artikel</h3>
                         </div>
                         <div class="col-md-6">
-                            <a href="/artikel/create" class="btn btn-primary btn-sm float-right">Tambah Data</a>
+                            <a href="/admin/artikel/create" class="btn btn-primary btn-sm float-right">Tambah Data</a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a class="btn btn-info text-white btn-sm" href="/artikel/{{ $item->id}}/edit">Edit</a>
+                                    <a class="btn btn-info text-white btn-sm" href="/admin/artikel/{{ $item->id}}/edit">Edit</a>
                                     <form onsubmit="return confirm('Delete this candidate permanently ?')" class="d-inline" action="#" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">

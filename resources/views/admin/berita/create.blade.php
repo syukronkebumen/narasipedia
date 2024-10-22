@@ -1,4 +1,4 @@
-@extends('layouts.appadmin')
+@extends('layouts.sbadmin')
 @section('content')
     <div class="container">
         <div class="row">
@@ -42,7 +42,8 @@
                                 <p class="text-danger">{{ $errors->first('gambar') }}</p>
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-danger btn-sm">Simpan</button>
+                                <button class="btn btn-primary btn-sm">Simpan</button>
+                                <a href="/admin/artikel" class="btn btn-danger btn-sm">Batal</a>
                             </div>
                         </form>
                     </div>

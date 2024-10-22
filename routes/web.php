@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\Admin\Artikel\ArtikelController;
+use App\Http\Controllers\Admin\Dashboard\DashboardController as DashboardDashboardController;
 use App\Http\Controllers\Aduan\AduanController;
 use App\Http\Controllers\Berita\BeritaController;
 use App\Http\Controllers\LoginController;
@@ -72,7 +73,10 @@ Route::get('/berita-detail/{slug}', [BeritaController::class, 'show'])->name('be
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/aduan', [AduanController::class, 'index'])->name('aduan');
-Route::get('/panduan', [PanduanController::class, 'index'])->name('panduan');
+Route::get('/panduan', [PanduanController::class, 'index'])->name('panduan');;
 
-//Admin Artikel
-Route::resource('/artikel', ArtikelController::class)->middleware('auth');
+Route::group(['prefix' => 'admin'], function () {
+    // Route::get('dashboard', ['as' => 'de.about', 'uses' => 'aboutController@index']);
+    Route::resource('/dashboard', DashboardDashboardController::class)->middleware('auth');
+    Route::resource('/artikel', ArtikelController::class)->middleware('auth');
+});
