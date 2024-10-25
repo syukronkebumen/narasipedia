@@ -20,7 +20,7 @@ class BeritaController extends Controller
                         'artikel.created_at'
                     )
                     ->orderBy('artikel.created_at','DESC')
-                    ->paginate(2);
+                    ->paginate(10);
         return view('berita.index', compact('artikel'));
     }
 
