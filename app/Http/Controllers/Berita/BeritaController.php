@@ -16,9 +16,11 @@ class BeritaController extends Controller
                         'artikel.judul',
                         'artikel.slug',
                         'artikel.deskripsi',
-                        'artikel.gambar'
+                        'artikel.gambar',
+                        'artikel.created_at'
                     )
-                    ->get();
+                    ->orderBy('artikel.created_at','DESC')
+                    ->paginate(2);
         return view('berita.index', compact('artikel'));
     }
 

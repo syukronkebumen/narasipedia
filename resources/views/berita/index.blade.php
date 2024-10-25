@@ -2,71 +2,214 @@
 
 @section('content')
 
-<!-- Page Title -->
-<div class="page-title" data-aos="fade">
-    <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Semua Artikel</h1>
-        <nav class="breadcrumbs">
-            <ol>
-                <li><a href="/berita">Beranda</a></li>
-                <li class="current">Artikel</li>
-            </ol>
-        </nav>
-    </div>
-</div><!-- End Page Title -->
-<!-- Slider Section -->
-
-<section id="service-details" class="service-details section">
-
+<section class="blog_area section-padding">
     <div class="container">
-        <div class="row mb-5 mt-3">
-            <div class="card my-4">
-                <div class="card">
-                    <img src="{{ '/storage/'.$artikel[0]->gambar }}" alt="Peringatan Keamanan" class="img-fluid" style="max-height: 400px; object-fit: cover">
-                </div>
-                <div class="card-body text-center">
-                    <h3 class="card-title">
-                        <a href="#!" class="text-decoration-none text-dark">{{ $artikel[0]->judul }}</a>
-                    </h3>
-                    <p>
-                        <small class="text-muted">
-                            <a href="#!" class="text-decoration-none">{{ $artikel[0]->nama_kategori }}</a> - <span class="text-dark">{{ \Carbon\Carbon::parse($artikel[0]->created_at)->format('j F Y') }}</span>
-                        </small>
-                    </p>
-                    <p class="card-text">
-                        {!! Str::limit( $artikel[0]->deskripsi, 150) !!}
-                    </p>
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    @foreach ($artikel as $item)
+                        <article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="{{ '/storage/'.$item->gambar }}" alt="">
+                                <a href="#" class="blog_item_date">
+                                    <h3>{{ \Carbon\Carbon::parse($item->created_at)->format('d') }}</h3>
+                                    <p>{{ \Carbon\Carbon::parse($item->created_at)->format('M') }}</p>
+                                </a>
+                            </div>
 
-                    <a href="{{ route('berita-detail', $artikel[0]->slug) }}" class="text-decoration-none btn btn-primary">Selengkapnya</a>
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="single-blog.html">
+                                    <h2>{{ $item->judul }}</h2>
+                                </a>
+                                <p>{!! \Illuminate\Support\Str::limit($item->deskripsi, 157, ' (...)') !!}</p>
+                                <ul class="blog-info-link">
+                                    <li><a href="#"><i class="fa fa-user"></i> {{ $item->nama_kategori }}</a></li>
+                                </ul>
+                            </div>
+                        </article>
+                    @endforeach
+
+                    {{ $artikel->links('berita.pagination') }}
                 </div>
             </div>
-            @foreach ($artikel as $item)
-            @if ($loop->first) @continue @endif
-            <div class="col-lg-4 col-md-6 mb-5">
-                <div class="card card-effect" style="box-shadow: var(--box-shadow);background-color: #fff;padding: 25px;transition: all 0.35s ease;">
-                    <div class="position-absolute bg-dark rounded px-3 py-2" style="background-color: rgba(0,0,0,0.7)">
-                        <a href="#!" class="text-white text-decoration-none">{{ $item->nama_kategori }}</a>
-                    </div>
-                    <img src="{{ '/storage/'.$item->gambar }}" alt="Peringatan Keamanan">
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="#">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder='Search Keyword'
+                                        onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Search Keyword'">
+                                    <div class="input-group-append">
+                                        <button class="btns" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                type="submit">Search</button>
+                        </form>
+                    </aside>
 
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="#!">{{ $item->judul }}</a>
-                        </h5>
-                        <p>
-                            <small class="text-muted">
-                                at <span class="text-dark">{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</span>
-                            </small>
-                        </p>
-                        <p class="card-text">{!! Str::limit( $item->deskripsi, 150) !!}</p>
-                        <a href="{{ route('berita-detail', $item->slug) }}" class="btn btn-primary">Selengkapnya</a>
-                    </div>
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">Category</h4>
+                        <ul class="list cat-list">
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Resaurant food</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Travel news</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Modern technology</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Product</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Inspiration</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="d-flex">
+                                    <p>Health Care</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Recent Post</h3>
+                        <div class="media post_item">
+                            <img src="assets/img/post/post_1.png" alt="post">
+                            <div class="media-body">
+                                <a href="single-blog.html">
+                                    <h3>From life was you fish...</h3>
+                                </a>
+                                <p>January 12, 2019</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="assets/img/post/post_2.png" alt="post">
+                            <div class="media-body">
+                                <a href="single-blog.html">
+                                    <h3>The Amazing Hubble</h3>
+                                </a>
+                                <p>02 Hours ago</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="assets/img/post/post_3.png" alt="post">
+                            <div class="media-body">
+                                <a href="single-blog.html">
+                                    <h3>Astronomy Or Astrology</h3>
+                                </a>
+                                <p>03 Hours ago</p>
+                            </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="assets/img/post/post_4.png" alt="post">
+                            <div class="media-body">
+                                <a href="single-blog.html">
+                                    <h3>Asteroids telescope</h3>
+                                </a>
+                                <p>01 Hours ago</p>
+                            </div>
+                        </div>
+                    </aside>
+                    <aside class="single_sidebar_widget tag_cloud_widget">
+                        <h4 class="widget_title">Tag Clouds</h4>
+                        <ul class="list">
+                            <li>
+                                <a href="#">project</a>
+                            </li>
+                            <li>
+                                <a href="#">love</a>
+                            </li>
+                            <li>
+                                <a href="#">technology</a>
+                            </li>
+                            <li>
+                                <a href="#">travel</a>
+                            </li>
+                            <li>
+                                <a href="#">restaurant</a>
+                            </li>
+                            <li>
+                                <a href="#">life style</a>
+                            </li>
+                            <li>
+                                <a href="#">design</a>
+                            </li>
+                            <li>
+                                <a href="#">illustration</a>
+                            </li>
+                        </ul>
+                    </aside>
+
+
+                    <aside class="single_sidebar_widget instagram_feeds">
+                        <h4 class="widget_title">Instagram Feeds</h4>
+                        <ul class="instagram_row flex-wrap">
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </aside>
+
+
+                    <aside class="single_sidebar_widget newsletter_widget">
+                        <h4 class="widget_title">Newsletter</h4>
+
+                        <form action="#">
+                            <div class="form-group">
+                                <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                type="submit">Subscribe</button>
+                        </form>
+                    </aside>
                 </div>
             </div>
-            @endforeach
         </div>
     </div>
-
-</section><!-- /Service Details Section -->
+</section>
 
 @endsection
