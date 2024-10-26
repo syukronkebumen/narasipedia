@@ -23,7 +23,7 @@
                                 </a>
                                 <p>{!! \Illuminate\Support\Str::limit($item->deskripsi, 157, ' (...)') !!}</p>
                                 <ul class="blog-info-link">
-                                    <li><a href="#"><i class="fa fa-user"></i> {{ $item->nama_kategori }}</a></li>
+                                    <li><a href="#"><i class="fa fa-user"></i> by : admin</a></li>
                                 </ul>
                             </div>
                         </article>
