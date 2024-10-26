@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="weekly-caption">
                                     <span class="color1">{{ $item->nama_kategori }}</span>
-                                    <h4><a href="#">{{ $item->judul }}</a></h4>
+                                    <h4><a href="{{ '/detail/'.$item->slug }}">{{ $item->judul }}</a></h4>
                                 </div>
                             </div> 
                         @endforeach
