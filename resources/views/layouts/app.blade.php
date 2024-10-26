@@ -92,7 +92,7 @@
                                 <div class="header-info-left">
                                     <ul>
                                         <li><img src="{{ asset('assets-aznews/img/icon/header_icon1.png') }}" alt="">34ºc, Sunny </li>
-                                        <li><img src="{{ asset('assets-aznews/img/icon/header_icon1.png') }}" alt="">Tuesday, 18th June, 2019</li>
+                                        <li><img src="{{ asset('assets-aznews/img/icon/header_icon1.png') }}" alt="">{{ \Carbon\Carbon::now()->translatedFormat('l, jS M, Y') }}</li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
