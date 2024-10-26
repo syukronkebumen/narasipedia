@@ -9,13 +9,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <meta name="description" content="CSIRT Lampung Timur bertanggung jawab atas penanganan insiden keamanan siber di wilayah Kabupaten Lampung Timur. Kami menawarkan layanan pemantauan, tanggapan insiden, analisis, serta edukasi untuk menjaga keamanan informasi pemerintah daerah.">
-    <meta name="keywords" content="CSIRT Lampung Timur, keamanan siber, keamanan informasi, tanggapan insiden, pemulihan insiden, analisis keamanan siber, pelatihan keamanan siber, Lampung Timur, keamanan jaringan, cyber security">
-    <meta name="author" content="CSIRT Lampung Timur">
+    <meta name="description" content="Narasipedia - Sumber informasi terlengkap yang menyajikan artikel, panduan, dan pengetahuan terkini di berbagai bidang. Jelajahi konten yang informatif dan bermanfaat untuk menambah wawasan Anda.">
+    <meta name="keywords" content="Narasipedia, informasi, panduan, pengetahuan, artikel terbaru, sumber informasi, edukasi, ilmu pengetahuan, artikel informatif, wawasan, edukasi online, pengetahuan umum">
+    <meta name="author" content="narasipedia">
 
     <!-- Open Graph Meta Tags untuk Social Media -->
-    <meta property="og:title" content="CSIRT Lampung Timur">
-    <meta property="og:description" content="CSIRT Lampung Timur bertanggung jawab atas penanganan insiden keamanan siber di wilayah Kabupaten Lampung Timur. Kami menawarkan layanan pemantauan, tanggapan insiden, analisis, serta edukasi untuk menjaga keamanan informasi pemerintah daerah.">
+    <meta property="og:title" content="narasipedia.co.id">
+    <meta property="og:description" content="Narasipedia - Sumber informasi terlengkap yang menyajikan artikel, panduan, dan pengetahuan terkini di berbagai bidang. Jelajahi konten yang informatif dan bermanfaat untuk menambah wawasan Anda.">
     <meta property="og:image" content="{{ url('assets-aznews/img/logo/logo_narasipedia_fav.png') }}">
     <meta property="og:url" content="">
     <meta property="og:type" content="website">
