@@ -2,67 +2,207 @@
 
 @section('content')
 
-<!-- Page Title -->
-<div class="page-title" data-aos="fade">
-    <div class="container d-lg-flex justify-content-between align-items-center">
-        <h1 class="mb-2 mb-lg-0">Detail</h1>
-        <nav class="breadcrumbs">
-            <ol>
-                <li><a href="/berita">Artikel</a></li>
-                <li class="current">{{ $detail->nama_kategori }}</li>
-            </ol>
-        </nav>
-    </div>
-</div><!-- End Page Title -->
-
-<!-- Service Details Section -->
-<section id="service-details" class="service-details section">
-
+<section class="blog_area single-post-area section-padding">
     <div class="container">
-
-        <div class="row gy-5">
-
-            <!-- <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="service-box">
-                    <h4>Serices List</h4>
-                    <div class="services-list">
-                        <a href="#" class="active"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
-                        <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Web Design</span></a>
-                        <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Product Management</span></a>
-                        <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Graphic Design</span></a>
-                        <a href="#"><i class="bi bi-arrow-right-circle"></i><span>Marketing</span></a>
+       <div class="row">
+          <div class="col-lg-8 posts-list">
+             <div class="single-post">
+                <div class="feature-img">
+                   <img class="img-fluid" src="{{ '/storage/'.$detail->gambar }}" alt="{{ $detail->judul }}">
+                </div>
+                <div class="blog_details">
+                   <h2>{{ $detail->judul }}
+                   </h2>
+                   <ul class="blog-info-link mt-3 mb-4">
+                      <li><a href="#"><i class="fa fa-user"></i> by : admin</a></li>
+                   </ul>
+                   {!! $detail->deskripsi !!}
+                </div>
+             </div>
+             <div class="comment-form">
+                <h4>Leave a Reply</h4>
+                <form class="form-contact comment_form" action="#" id="commentForm">
+                   <div class="row">
+                      <div class="col-12">
+                         <div class="form-group">
+                            <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                               placeholder="Write Comment"></textarea>
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                            <input class="form-control" name="name" id="name" type="text" placeholder="Name">
+                         </div>
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                            <input class="form-control" name="email" id="email" type="email" placeholder="Email">
+                         </div>
+                      </div>
+                      <div class="col-12">
+                         <div class="form-group">
+                            <input class="form-control" name="website" id="website" type="text" placeholder="Website">
+                         </div>
+                      </div>
+                   </div>
+                   <div class="form-group">
+                      <button type="submit" class="button button-contactForm btn_1 boxed-btn">Send Message</button>
+                   </div>
+                </form>
+             </div>
+          </div>
+          <div class="col-lg-4">
+             <div class="blog_right_sidebar">
+                <aside class="single_sidebar_widget search_widget">
+                   <form action="#">
+                      <div class="form-group">
+                         <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder='Search Keyword'
+                               onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Keyword'">
+                            <div class="input-group-append">
+                               <button class="btns" type="button"><i class="ti-search"></i></button>
+                            </div>
+                         </div>
+                      </div>
+                      <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                         type="submit">Search</button>
+                   </form>
+                </aside>
+                <aside class="single_sidebar_widget post_category_widget">
+                   <h4 class="widget_title">Category</h4>
+                   <ul class="list cat-list">
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Resaurant food</p>
+                            <p>(37)</p>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Travel news</p>
+                            <p>(10)</p>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Modern technology</p>
+                            <p>(03)</p>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Product</p>
+                            <p>(11)</p>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Inspiration</p>
+                            <p>(21)</p>
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#" class="d-flex">
+                            <p>Health Care</p>
+                            <p>(21)</p>
+                         </a>
+                      </li>
+                   </ul>
+                </aside>
+                <aside class="single_sidebar_widget popular_post_widget">
+                   <h3 class="widget_title">Recent Post</h3>
+                   @foreach ($artikelSide as $item)
+                    <div class="media post_item">
+                        <img src="{{ '/storage/'.$item->gambar }}" width="80" height="80" alt="post">
+                        <div class="media-body">
+                            <a href="{{ '/detail/'.$item->slug }}">
+                                <h3>{{ $item->judul }}</h3>
+                            </a>
+                            <p>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</p>
+                        </div>
                     </div>
-                </div>
+                   @endforeach
 
-                <div class="service-box">
-                    <h4>Download Catalog</h4>
-                    <div class="download-catalog">
-                        <a href="#"><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
-                        <a href="#"><i class="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
-                    </div>
-                </div>
-
-                <div class="help-box d-flex flex-column justify-content-center align-items-center">
-                    <i class="bi bi-headset help-icon"></i>
-                    <h4>Have a Question?</h4>
-                    <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+1 5589 55488 55</span></p>
-                    <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:contact@example.com">contact@example.com</a></p>
-                </div>
-
-            </div> -->
-
-            <div class="col-lg-12 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
-                <h3>{{ $detail->judul }}</h3>
-                <img src="{{ '/storage/'.$detail->gambar }}" alt="" class="img-fluid services-img">
-                <p>{!! $detail->deskripsi !!}</p>
-                
-            </div>
-
-        </div>
-
+                </aside>
+                <aside class="single_sidebar_widget tag_cloud_widget">
+                   <h4 class="widget_title">Tag Clouds</h4>
+                   <ul class="list">
+                      <li>
+                         <a href="#">project</a>
+                      </li>
+                      <li>
+                         <a href="#">love</a>
+                      </li>
+                      <li>
+                         <a href="#">technology</a>
+                      </li>
+                      <li>
+                         <a href="#">travel</a>
+                      </li>
+                      <li>
+                         <a href="#">restaurant</a>
+                      </li>
+                      <li>
+                         <a href="#">life style</a>
+                      </li>
+                      <li>
+                         <a href="#">design</a>
+                      </li>
+                      <li>
+                         <a href="#">illustration</a>
+                      </li>
+                   </ul>
+                </aside>
+                <aside class="single_sidebar_widget instagram_feeds">
+                   <h4 class="widget_title">Instagram Feeds</h4>
+                   <ul class="instagram_row flex-wrap">
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
+                         </a>
+                      </li>
+                      <li>
+                         <a href="#">
+                            <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
+                         </a>
+                      </li>
+                   </ul>
+                </aside>
+                <aside class="single_sidebar_widget newsletter_widget">
+                   <h4 class="widget_title">Newsletter</h4>
+                   <form action="#">
+                      <div class="form-group">
+                         <input type="email" class="form-control" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Enter email'" placeholder='Enter email' required>
+                      </div>
+                      <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                         type="submit">Subscribe</button>
+                   </form>
+                </aside>
+             </div>
+          </div>
+       </div>
     </div>
-
-</section><!-- /Service Details Section -->
+ </section>
 
 @endsection

@@ -45,12 +45,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Route::get('redirect/{driver}', 'Auth\LoginController@redirectToProvider')->name('login.provider');
 // Route::get('{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('login.callback');
 
-Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
 
-Route::resource('candidates', CandidateController::class);
+// Route::resource('candidates', CandidateController::class);
 
-Route::get('/pilihan', [ChoiceController::class, 'pilihan'])->name('candidates.pilihan');
-Route::post('/users-pilih', [ChoiceController::class, 'pilih'])->name('users.pilih');
+// Route::get('/pilihan', [ChoiceController::class, 'pilihan'])->name('candidates.pilihan');
+// Route::post('/users-pilih', [ChoiceController::class, 'pilih'])->name('users.pilih');
 
 
 
@@ -60,23 +60,17 @@ Route::post('/users-pilih', [ChoiceController::class, 'pilih'])->name('users.pil
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/hasil-polling', [ChartController::class, 'index'])->name('hasil-polling');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Profil
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
-Route::get('/layanan', [LayananController::class, 'index'])->name('layanan');
 Route::get('/berita', [BeritaController::class, 'index'])->name('berita');
-Route::get('/berita-detail/{slug}', [BeritaController::class, 'show'])->name('berita-detail');
+Route::get('/detail/{slug}', [BeritaController::class, 'show'])->name('berita-detail');
 
 Route::get('/kontak', [KontakController::class, 'index'])->name('kontak');
-Route::get('/docs', [DocsController::class, 'index'])->name('docs');
-Route::get('/aduan', [AduanController::class, 'index'])->name('aduan');
-Route::get('/panduan', [PanduanController::class, 'index'])->name('panduan');;
 
 Route::group(['prefix' => 'admin'], function () {
-    // Route::get('dashboard', ['as' => 'de.about', 'uses' => 'aboutController@index']);
     Route::resource('/dashboard', DashboardDashboardController::class)->middleware('auth');
     Route::resource('/artikel', ArtikelController::class)->middleware('auth');
 });

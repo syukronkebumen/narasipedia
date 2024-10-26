@@ -21,7 +21,20 @@ class BeritaController extends Controller
                     )
                     ->orderBy('artikel.created_at','DESC')
                     ->paginate(10);
-        return view('berita.index', compact('artikel'));
+        
+        $artikelSide = Artikel::leftjoin('kategori_artikel','kategori_artikel.id','=','artikel.kategori_id')
+                    ->select(
+                        'kategori_artikel.nama as nama_kategori',
+                        'artikel.judul',
+                        'artikel.slug',
+                        'artikel.deskripsi',
+                        'artikel.gambar',
+                        'artikel.created_at'
+                    )
+                    ->inRandomOrder('artikel.created_at','DESC')
+                    ->limit(5)
+                    ->get();
+        return view('berita.index', compact('artikel','artikelSide'));
     }
 
     public function show(Request $request, $slug)
@@ -36,7 +49,19 @@ class BeritaController extends Controller
                     )
                     ->where('slug', $slug)
                     ->first();
-
-        return view('berita.detail', compact('detail'));
+        
+        $artikelSide = Artikel::leftjoin('kategori_artikel','kategori_artikel.id','=','artikel.kategori_id')
+                    ->select(
+                        'kategori_artikel.nama as nama_kategori',
+                        'artikel.judul',
+                        'artikel.slug',
+                        'artikel.deskripsi',
+                        'artikel.gambar',
+                        'artikel.created_at'
+                    )
+                    ->inRandomOrder('artikel.created_at','DESC')
+                    ->limit(5)
+                    ->get();
+        return view('berita.detail', compact('detail','artikelSide'));
     }
 }

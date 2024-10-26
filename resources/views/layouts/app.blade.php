@@ -117,7 +117,7 @@
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
                                 <div class="header-banner f-right ">
-                                    <img src="{{ asset('assets-aznews/img/hero/header_card.jpg') }}" alt="">
+                                    <img src="{{ asset('assets-aznews/img/hero/ads_homepage.jpg') }}" alt="">
                                 </div>
                             </div>
                         </div>
