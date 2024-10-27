@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <label for="">Gambar</label>
                                 <input type="file" name="gambar" id="gambar" class="form-control {{ $errors->first('gambar') ? "is-invalid" : ""}}">
-                                <img src="{{asset('storage/'.$datas->gambar)}}" alt="{{ $datas->judul }}">
+                                <img src="{{asset('storage/'.$datas->gambar)}}" width="100%" height="auto"  alt="{{ $datas->judul }}">
                                 <p class="text-danger">{{ $errors->first('gambar') }}</p>
                             </div>
                             <div class="form-group">
