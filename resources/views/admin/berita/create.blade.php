@@ -21,24 +21,24 @@
                                 <select class="form-control" name="kategori_id" id="kategori_id">
                                     <option disabled value="" selected> Pilih Kategori </option>
                                     @foreach ($kategoris as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama }} </option>
+                                        <option @if (old('kategori_id') == $item->id) {{ 'selected' }} @endif value="{{ $item->id }}">{{ $item->nama }} </option>
                                     @endforeach
                                 </select>
                                 <p class="text-danger">{{ $errors->first('kategori_id') }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="">Judul</label>
-                                <input type="text" name="judul" id="judul" class="form-control {{ $errors->first('judul') ? "is-invalid" : ""}}" placeholder="Masukkan Judul">
+                                <input type="text" name="judul" value="{{ old('judul') }}" id="judul" class="form-control {{ $errors->first('judul') ? "is-invalid" : ""}}" placeholder="Masukkan Judul">
                                 <p class="text-danger">{{ $errors->first('judul') }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="">Deskripsi</label>
-                                <textarea class="form-control" id="deskripsi" placeholder="Enter the Description" name="deskripsi"></textarea>
+                                <textarea class="form-control" id="deskripsi" placeholder="Enter the Description" name="deskripsi">{{ old('deskripsi') }}</textarea>
                                 <p class="text-danger">{{ $errors->first('deskripsi') }}</p>
                             </div>
                             <div class="form-group">
                                 <label for="">Gambar</label>
-                                <input type="file" name="gambar" id="gambar" class="form-control {{ $errors->first('gambar') ? "is-invalid" : ""}}">
+                                <input type="file" name="gambar" id="gambar" value="{{ old('gambar') }}" class="form-control {{ $errors->first('gambar') ? "is-invalid" : ""}}">
                                 <p class="text-danger">{{ $errors->first('gambar') }}</p>
                             </div>
                             <div class="form-group">
