@@ -42,7 +42,7 @@
                                 </td>
                                 <td>
                                     <a class="btn btn-info text-white btn-sm" href="/admin/artikel/{{ $item->id}}/edit">Edit</a>
-                                    <form onsubmit="return confirm('Delete this candidate permanently ?')" class="d-inline" action="#" method="POST">
+                                    <form onsubmit="return confirm('Anda yakin akan menghapus data ini ?')" class="d-inline" action="{{ route('artikel.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete" class="btn btn-danger btn-sm">
@@ -50,15 +50,9 @@
                                 </td>
                             </tr>
                             @endforeach
-                        <tfoot>
-                            <tr>
-                                <td colspan=10>
-                                    {{$datas->appends(Request::all())->links()}}
-                                </td>
-                            </tr>
-                        </tfoot>
                         </tbody>
                     </table>
+                    {{ $datas->links() }}
                 </div>
             </div>
         </div>
