@@ -45,7 +45,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ (\Request::route()->getName() == 'dashboard.index') ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -58,7 +58,7 @@
             <div class="sidebar-heading">
                 Main
             </div>
-            <li class="nav-item">
+            <li class="nav-item {{ (\Request::route()->getName() == 'artikel.index') ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/artikel">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Berita</span></a>
