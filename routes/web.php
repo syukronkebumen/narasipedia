@@ -14,6 +14,7 @@
 use App\Http\Controllers\Admin\Artikel\ArtikelController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController as DashboardDashboardController;
 use App\Http\Controllers\Aduan\AduanController;
+use App\Http\Controllers\Auth\LoginController as AuthLoginController;
 use App\Http\Controllers\Berita\BeritaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CandidateController;
@@ -74,3 +75,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('/dashboard', DashboardDashboardController::class)->middleware('auth');
     Route::resource('/artikel', ArtikelController::class)->middleware('auth');
 });
+
+Route::get('/logout', [AuthLoginController::class, 'logout'])->name('logout');
