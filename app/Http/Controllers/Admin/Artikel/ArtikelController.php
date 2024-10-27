@@ -101,6 +101,7 @@ class ArtikelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $artikel = Artikel::destroy($id);        
+        return redirect()->route('artikel.index')->with('status','data berhasil dihapus!');
     }
 }
