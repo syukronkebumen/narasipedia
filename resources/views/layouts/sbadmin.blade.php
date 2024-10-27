@@ -61,7 +61,7 @@
             <li class="nav-item {{ (\Request::route()->getName() == 'artikel.index') ? 'active' : '' }}">
                 <a class="nav-link" href="/admin/artikel">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Berita</span></a>
+                    <span>Artikel</span></a>
             </li>
 
             <!-- Divider -->
