@@ -15,7 +15,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     @if(session('status'))
                     <div class="alert alert-success">
                         {{session('status')}}
