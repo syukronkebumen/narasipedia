@@ -2,7 +2,7 @@
 
 @section('title', $detail->judul)
 @section('og_title', $detail->judul)
-@section('og_description', strip_tags($detail->deskripsi))
+@section('og_description', Str::limit(strip_tags($detail->deskripsi), 150))
 @section('og_image', url('/storage/'.$detail->gambar))
 @section('og_url', url()->current())
 
