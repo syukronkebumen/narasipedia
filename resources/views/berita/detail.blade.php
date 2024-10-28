@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('title', $detail->judul)
+@section('og_title', $detail->judul)
+@section('og_description', `{!! $detail->deskripsi !!}`)
+@section('og_image', url('/storage/'.$detail->gambar))
+@section('og_url', url()->current())
+
 @section('content')
 
 <section class="blog_area single-post-area section-padding">

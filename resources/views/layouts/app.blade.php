@@ -8,16 +8,16 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', config('app.name', 'Laravel'))</title>
     <meta name="description" content="Narasipedia - Sumber informasi terlengkap yang menyajikan artikel, panduan, dan pengetahuan terkini di berbagai bidang. Jelajahi konten yang informatif dan bermanfaat untuk menambah wawasan Anda.">
     <meta name="keywords" content="Narasipedia, informasi, panduan, pengetahuan, artikel terbaru, sumber informasi, edukasi, ilmu pengetahuan, artikel informatif, wawasan, edukasi online, pengetahuan umum">
     <meta name="author" content="narasipedia">
 
     <!-- Open Graph Meta Tags untuk Social Media -->
-    <meta property="og:title" content="narasipedia.co.id">
-    <meta property="og:description" content="Narasipedia - Sumber informasi terlengkap yang menyajikan artikel, panduan, dan pengetahuan terkini di berbagai bidang. Jelajahi konten yang informatif dan bermanfaat untuk menambah wawasan Anda.">
-    <meta property="og:image" content="{{ url('assets-aznews/img/logo/logo_narasipedia_fav.png') }}">
-    <meta property="og:url" content="">
+    <meta property="og:title" content="@yield('og_title', 'Narasipedia.co.id')">
+    <meta property="og:description" content="@yield('og_description', 'Narasipedia - Sumber informasi terlengkap yang menyajikan artikel, panduan, dan pengetahuan terkini di berbagai bidang. Jelajahi konten yang informatif dan bermanfaat untuk menambah wawasan Anda.') ">
+    <meta property="og:image" content="@yield('og_image', url('assets-aznews/img/logo/logo_narasipedia_fav.png'))">
+    <meta property="og:url" content="@yield('og_url', url()->current())">
     <meta property="og:type" content="website">
 
     <!-- Robots Meta Tag -->
