@@ -47,7 +47,7 @@
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                     </form>
-                                    <a class="btn btn-info text-white btn-sm" target="_blank" href="/detail/{{ $item->slug}}">view</a>
+                                    <a class="btn btn-warning text-white btn-sm" value="copy" onclick="copyToClipboard('{{ env('APP_URL') }}/detail/{{ $item->slug }}')">Copy!</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -60,3 +60,9 @@
     </div>
 </div>
 @endsection
+<script>
+    function copyToClipboard(link) {
+        navigator.clipboard.writeText(link)
+        alert("Copied the text: " + link)
+    }
+</script>
