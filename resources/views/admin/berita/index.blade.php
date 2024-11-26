@@ -34,7 +34,7 @@
                             @foreach ($datas as $item)
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$item->judul}}</td>
+                                <td>{{ Str::limit($item->judul, 20) }}</td>
                                 <td>
                                     @if ($item->gambar)
                                     <img src="{{asset('storage/'.$item->gambar)}}" width="100px" />
@@ -47,6 +47,7 @@
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="submit" value="Delete" class="btn btn-danger btn-sm">
                                     </form>
+                                    <a class="btn btn-info text-white btn-sm" target="_blank" href="/detail/{{ $item->slug}}">view</a>
                                 </td>
                             </tr>
                             @endforeach
