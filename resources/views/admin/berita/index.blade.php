@@ -63,6 +63,5 @@
 <script>
     function copyToClipboard(link) {
         navigator.clipboard.writeText(link)
-        alert("Copied the text: " + link)
     }
 </script>
