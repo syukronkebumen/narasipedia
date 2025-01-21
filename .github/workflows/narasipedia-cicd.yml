@@ -1,0 +1,35 @@
+name: CI CD Proccess Narasipedia
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout
+
+      uses: actions/checkout@v2
+
+    - name: Deployment
+
+      run: |
+
+          cd /home/narasipedia/htdocs/narasipedia.co.id
+
+          git checkout -f
+          
+          git pull origin main
+    - name: Install dependencies
+      env:
+        COMPOSER_ALLOW_SUPERUSER: 1
+      run: |
+        set -e
+        composer install || composer update
+    - run : |
+          cd /home/narasipedia/htdocs/narasipedia.co.id
+          
+    - run : systemctl restart nginx
